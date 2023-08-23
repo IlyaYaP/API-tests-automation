@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from pydantic.types import PastDate, FutureDate
-
+from pydantic import Field
+from typing import Union
 
 class Books(BaseModel):
     bookingid: int
@@ -17,4 +17,4 @@ class Book(BaseModel):
     totalprice: int
     depositpaid: bool
     bookingdates: BookingDates
-    additionalneeds: str
+    additionalneeds: Union[str, None]

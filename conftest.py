@@ -12,8 +12,12 @@ class ApiClients:
         return requests.get(url=url, params=params, headers=headers)
 
     def post(self, path='/', params=None, data=None, json=None, headers=None):
-        url = f"{self.base_url}{path}"
-        return requests.post(url=url, params=params, data=data, json=json, headers=headers)
+        try:
+            url = f"{self.base_url}{path}"
+            return requests.post(url=url, params=params, data=data, json=json, headers=headers)
+        except requests.exceptions.ConnectionError:
+            print("Connection refused")
+    
 
 
 class ResponseValidate:
